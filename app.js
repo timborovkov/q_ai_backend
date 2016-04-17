@@ -18,41 +18,20 @@ var db = mysql.createConnection({
 
 app.use(bodyParser.json());
 app.get('/', function(req, res){
-  res.send('<h1>This is server of Q AI brains.</h1>Anspirit Company Official Server');
+  res.send('<h1>This is server of Q AI brains.</h1>Anspirit Company Official Server<br><a href="http://anspirit.org"><h2>Go here!</h2></a>');
 });
 
-//Setup new QHUB on server and database
-app.get('/newHub', function(req, res){
+app.get('/test', function(req, res){
   res.setHeader('Content-Type', 'application/json');
   var ip = getClientAddress(req);
   var secret = req.query.secret;
-  var hubName = req.query.hubName;
-  var latitude = req.query.latitude;
-  var longitude = req.query.longitude;
-  if(secret == null || hubName == null || latitude == null || longitude == null){
-    console.log("No input");
-    //No input from user
-    res.send(JSON.stringify({done: false, error: 'no input data from user'}));
-  }else{
-    db.connect();
-    db.query("SELECT * FROM `hub_list` WHERE `ip`='" + ip + "'", function(err, rows, fields) {
-      if (err) throw err;
-      if(rows.length == 0){
-        var query =
-        "INSERT INTO `hub_list` (`ip`, `secret`, `name`, `latitude`, `longitude`) VALUES ('" + ip + "', " + secret + ", '" + hubName + "', " + latitude + ", " + longitude + ")";
-        console.log(query);
-        db.query(query, function(err, rows, fields) {
-          if (err) throw err;
-          //Done
-          res.send(JSON.stringify({done: true}))
-        });
-        db.end();
-      }else{
-        //Already exist
-        res.send(JSON.stringify({done: false, error: 'hub already exist'}));
-      }
-    });
-  }
+  res.send(JSON.stringify({done: true, ip: ip}));
+  /*
+  db.connect();
+  db.query("SELECT * FROM `hub_list` WHERE `ip`='" + ip + "'", function(err, rows, fields) {
+    if (err) throw err;
+  });
+  */
 });
 
 io.on('connection', function(socket){
