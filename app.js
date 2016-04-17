@@ -18,7 +18,7 @@ var db = mysql.createConnection({
 
 app.use(bodyParser.json());
 app.get('/', function(req, res){
-  res.send('<h1>Sorry, you don\'t have access here.</h1><br>This is server of Q AI brains.<br><br><br>Anspirit Company Official Server');
+  res.send('<h1>This is server of Q AI brains.</h1>Anspirit Company Official Server');
 });
 
 //Setup new QHUB on server and database
