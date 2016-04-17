@@ -1,0 +1,22 @@
+{
+  "name": "ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/timborovkov/q_ai_backend.git",
+  "author": "Tim Borovkov",
+  "license": "ISC",
+  "despencies": {
+    "ajax-request": "1.2.1",
+    "azure": "0.10.6",
+    "body-parser": "1.15.0",
+    "crypto": "0.0.3",
+    "express": "4.13.4",
+    "machine_learning": "0.0.8",
+    "mysql": "2.10.2",
+    "socket.io": "1.4.5"
+  }
+}
